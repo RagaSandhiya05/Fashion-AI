@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fashion Website</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe6f2, #fff);
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #ff0066, #ff4081);
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 32px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+
+        /* FIX HERE — Banner touching content */
+        .banner {
+            width: 100%;
+            height: 120px;
+            background: url("https://i.pinimg.com/736x/ba/cd/08/bacd08cd5d8dfaa515a6a39aea66e681.jpg") center/cover no-repeat;
+            display: block;
+            line-height: 0;
+            margin-bottom: -40px; /* PULL SECTION UP */
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            padding: 40px 30px;
+            max-width: 900px;
+            position: relative;
+            top: -20px; /* ATTACH PERFECT */
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 25px rgba(255,0,128,0.2);
+            border: 2px solid #ff66a3;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s ease-in-out;
+        }
+
+        #about.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #about h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: #ff0066;
+        }
+
+        #about p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #333;
+        }
+
+        #about ul {
+            font-size: 20px;
+            line-height: 1.8;
+            padding-left: 15px;
+        }
+
+        #about ul li {
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background: #ffe6f2;
+            border-left: 4px solid #ff0066;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        #about ul li:hover {
+            background: #ffcce1;
+            transform: translateX(10px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #111;
+            color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Fashion Website</h1>
+    </header>
+
+    <!-- BANNER -->
+    <div class="banner"></div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" style="padding: 40px; max-width: 900px; margin: auto; font-family: Arial;">
+
+    <h2 style="text-align:center; font-size: 32px; margin-bottom: 0;">About Us</h2>
+
+    <!-- REMOVE top margin on first <p> -->
+    <p style="font-size: 18px; line-height: 1.7; margin-top: 5px;">
+        Welcome to <strong>FashionFit Studio</strong>, your complete online destination for creating
+        personalized outfits with perfect measurements. Our platform empowers customers to
+        <strong>choose their material</strong>, <strong>select a dress model</strong>, and
+        <strong>chat directly with professional designers</strong> to bring their ideas to life.
+    </p>
+
+    <p style="font-size: 18px; line-height: 1.7; margin-top: 15px;">
+        We use advanced <strong>body measurement scanning technology</strong> to capture your accurate 
+        body dimensions, ensuring that every dress fits perfectly. With guaranteed precision and 
+        designer guidance, we make the custom clothing experience easy, seamless, and enjoyable.
+    </p>
+
+    <p style="font-size: 18px; line-height: 1.7; margin-top: 15px;">
+        Our mission is to revolutionize the fashion industry by combining creativity, technology, 
+        and personalization. Whether you're designing for a special occasion or everyday wear, 
+        we provide end-to-end support—from fabric selection to doorstep delivery.
+    </p>
+
+    <p style="font-size: 18px; line-height: 1.7; margin-top: 15px;">
+        If you are not satisfied with your dress, we offer a simple and transparent 
+        <strong>return and redesign option</strong>, ensuring you always receive the perfect outfit.
+    </p>
+
+    <h3 style="margin-top: 25px; margin-bottom: 10px;">Why Choose Us?</h3>
+
+    <ul style="font-size: 18px; line-height: 1.8; margin-top: 0;">
+        <li>Custom outfit design with your chosen fabric and style</li>
+        <li>Live chat with professional fashion designers</li>
+        <li>AI-powered body measurement scanning</li>
+        <li>User-friendly login and shopping experience</li>
+        <li>Easy return policy if you're not satisfied</li>
+    </ul>
+
+    <p style="font-size: 18px; margin-top: 15px; line-height: 1.7;">
+        At FashionFit Studio, we don’t just create clothes—we create the perfect fit for you.
+    </p>
+
+</section>
+
+
+    <!-- FOOTER -->
+    <footer>
+       © 2025 Fashion Website | All Rights Reserved
+    </footer>
+
+    <script>
+        window.onload = () => {
+            document.getElementById('about').classList.add('visible');
+        };
+    </script>
+
+</body>
+</html>

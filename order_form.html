@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dress Delivery Order</title>
+</head>
+<body>
+  <h2>Order Your Dress</h2>
+
+  <!-- 👇 Paste this line here -->
+  <form action="submit_order.php" method="POST">
+
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br>
+
+    <label>Phone:</label><br>
+    <input type="text" name="phone" required><br>
+
+    <label>Address:</label><br>
+    <textarea name="address" required></textarea><br>
+
+    <label>Dress Name:</label><br>
+    <input type="text" name="dress_name" required><br>
+
+    <label>Size:</label><br>
+    <select name="dress_size">
+      <option>XS</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select><br>
+
+    <label>Quantity:</label><br>
+    <input type="number" name="quantity" min="1" required><br><br>
+
+    <button type="submit">Place Order</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Order Dress</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #43e97b, #38f9d7, #5b2c6f);
+
+
+
+
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden; /* 🔴 removes scroll */
+}
+
+/* Card */
+.form-box{
+  background:#fff;
+  width:420px;
+  padding:22px 28px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+h2{
+  text-align:center;
+  color:#c2185b;
+  margin:0 0 12px;
+  font-size:22px;
+}
+
+/* Inputs */
+input, select, textarea{
+  width:100%;
+  padding:9px 10px;
+  margin:7px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+
+textarea{
+  height:70px;
+  resize:none;
+}
+
+/* Button */
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#c2185b;
+  color:#fff;
+  border:none;
+  border-radius:25px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#f06292;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+  <h2>Order Your Dress</h2>
+
+  <form action="order.php" method="POST">
+    <input type="text" name="name" placeholder="Customer Name" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email">
+
+    <select name="dress_type" required>
+      <option value="">Select Dress Type</option>
+      <option>Kurti</option>
+      <option>Saree</option>
+      <option>Gown</option>
+      <option>Salwar</option>
+    </select>
+
+    <select name="size" required>
+      <option value="">Select Size</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+
+    <input type="number" name="quantity" value="1" min="1" required>
+
+    <textarea name="address" placeholder="Delivery Address" required></textarea>
+
+    <button type="submit">Place Order</button>
+  </form>
+</div>
+
+</body>
+</html>

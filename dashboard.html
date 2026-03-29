@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fashion Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <a href="index.html" class="header-logo">Fashion Store</a>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="header-link">Home</a>
+            <button id="header-login-btn" class="header-link btn btn-primary">Login</button>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Dashboard</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active" data-page="home">
+                    <span class="icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-link" data-page="body-scan">
+                    <span class="icon">📱</span>
+                    <span>Body Scan</span>
+                </a>
+                <a href="#" class="nav-link" data-page="outfits">
+                    <span class="icon">👗</span>
+                    <span>Outfits</span>
+                </a>
+                <a href="#" class="nav-link" data-page="orders">
+                    <span class="icon">📦</span>
+                    <span>My Orders</span>
+                </a>
+                <a href="#" class="nav-link" data-page="messages">
+                    <span class="icon">💬</span>
+                    <span>Messages</span>
+                </a>
+                <a href="#" class="nav-link" data-page="returns">
+                    <span class="icon">↩️</span>
+                    <span>Returns</span>
+                </a>
+                <a href="#" class="nav-link" data-page="profile">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-bar">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search outfits...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="user-info">
+                    <span id="user-name"></span>
+                    <span id="unread-messages" class="badge">0</span>
+                </div>
+            </div>
+            
+            <!-- Home Page -->
+            <section id="home-page" class="page active">
+                <h1>Welcome to Fashion Store</h1>
+                <p>Create your perfect custom outfit with our professional designers</p>
+                
+                <div class="quick-actions">
+                    <div class="action-card" onclick="switchPage('body-scan')">
+                        <h3>📱 Body Scan</h3>
+                        <p>Get accurate measurements with 3D body scanning</p>
+                    </div>
+                    <div class="action-card" onclick="switchPage('outfits')">
+                        <h3>👗 Browse Outfits</h3>
+                        <p>Explore custom designs from top designers</p>
+                    </div>
+                    <div class="action-card" onclick="switchPage('messages')">
+                        <h3>💬 Message Designer</h3>
+                        <p>Chat with designers about your custom design</p>
+                    </div>
+                    <div class="action-card" onclick="switchPage('orders')">
+                        <h3>📦 Track Orders</h3>
+                        <p>Monitor your custom outfit production</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Body Scan Page -->
+            <section id="body-scan-page" class="page">
+                <h1>3D Body Scan</h1>
+                <p>Get accurate body measurements using 3D scanning technology</p>
+                
+                <div class="body-scan-container">
+                    <div id="scan-canvas"></div>
+                    
+                    <div class="scan-info">
+                        <h3>How it works:</h3>
+                        <ol>
+                            <li>Stand in front of your camera</li>
+                            <li>Allow camera access when prompted</li>
+                            <li>The 3D scanner will capture your body measurements</li>
+                            <li>Review and confirm your measurements</li>
+                        </ol>
+                        
+                        <button id="start-scan-btn" class="btn btn-primary">Start 3D Body Scan</button>
+                    </div>
+                </div>
+                
+                <div id="measurements-display" class="measurements-grid" style="display: none;">
+                    <h3>Your Body Measurements</h3>
+                    <div class="measurement">
+                        <label>Height</label>
+                        <input type="number" id="height" placeholder="cm" step="0.5">
+                    </div>
+                    <div class="measurement">
+                        <label>Chest</label>
+                        <input type="number" id="chest" placeholder="cm" step="0.5">
+                    </div>
+                    <div class="measurement">
+                        <label>Waist</label>
+                        <input type="number" id="waist" placeholder="cm" step="0.5">
+                    </div>
+                    <div class="measurement">
+                        <label>Hips</label>
+                        <input type="number" id="hips" placeholder="cm" step="0.5">
+                    </div>
+                    <div class="measurement">
+                        <label>Shoulder Width</label>
+                        <input type="number" id="shoulder-width" placeholder="cm" step="0.5">
+                    </div>
+                    <div class="measurement">
+                        <label>Arm Length</label>
+                        <input type="number" id="arm-length" placeholder="cm" step="0.5">
+                    </div>
+                    <div class="measurement">
+                        <label>Inseam</label>
+                        <input type="number" id="inseam" placeholder="cm" step="0.5">
+                    </div>
+                    
+                    <button id="save-measurements-btn" class="btn btn-primary" style="grid-column: 1 / -1;">Save Measurements</button>
+                </div>
+            </section>
+            
+            <!-- Outfits Page -->
+            <section id="outfits-page" class="page">
+                <h1>Browse Outfits</h1>
+                
+                <div class="filters">
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="dress">Dress</option>
+                        <option value="suit">Suit</option>
+                        <option value="casual">Casual</option>
+                        <option value="formal">Formal</option>
+                    </select>
+                </div>
+                
+                <div id="outfits-grid" class="outfits-grid">
+                    <!-- Outfits will be loaded here -->
+                </div>
+            </section>
+            
+            <!-- Outfit Details Modal -->
+            <div id="outfit-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    
+                    <div class="outfit-modal-body">
+                        <div class="outfit-image">
+                            <img id="modal-outfit-image" src="" alt="Outfit">
+                        </div>
+                        
+                        <div class="outfit-details">
+                            <h2 id="modal-outfit-name"></h2>
+                            <p id="modal-outfit-description"></p>
+                            
+                            <p class="designer">Designer: <span id="modal-designer-name"></span></p>
+                            
+                            <p class="price">Base Price: $<span id="modal-outfit-price"></span></p>
+                            
+                            <div id="customizations-section">
+                                <h3>Customization Options</h3>
+                                <div id="modal-customizations"></div>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <input type="number" id="quantity" value="1" min="1">
+                                <button id="add-to-order-btn" class="btn btn-primary">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Orders Page -->
+            <section id="orders-page" class="page">
+                <h1>My Orders</h1>
+                
+                <div id="orders-container" class="orders-container">
+                    <!-- Orders will be loaded here -->
+                </div>
+            </section>
+            
+            <!-- Order Details Modal -->
+            <div id="order-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    
+                    <div class="order-modal-body">
+                        <h2>Order Details</h2>
+                        
+                        <div class="order-info">
+                            <p><strong>Order Number:</strong> <span id="modal-order-number"></span></p>
+                            <p><strong>Status:</strong> <span id="modal-order-status" class="status-badge"></span></p>
+                            <p><strong>Total Price:</strong> $<span id="modal-order-total"></span></p>
+                            <p><strong>Created:</strong> <span id="modal-order-date"></span></p>
+                        </div>
+                        
+                        <div id="order-customizations">
+                            <h3>Customization Details</h3>
+                            <pre id="modal-customization-details"></pre>
+                        </div>
+                        
+                        <div class="order-actions">
+                            <button id="pay-btn" class="btn btn-primary">Proceed to Payment</button>
+                            <button id="request-return-btn" class="btn btn-warning">Request Return</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages Page -->
+            <section id="messages-page" class="page">
+                <h1>Messages</h1>
+                
+                <div class="messages-container">
+                    <div class="conversations-list">
+                        <h3>Conversations</h3>
+                        <div id="conversations"></div>
+                    </div>
+                    
+                    <div class="chat-window">
+                        <div id="chat-header">
+                            <h3>Select a conversation</h3>
+                        </div>
+                        
+                        <div id="messages-list" class="messages-list">
+                            <!-- Messages will be loaded here -->
+                        </div>
+                        
+                        <div class="message-input">
+                            <textarea id="message-text" placeholder="Type your message..."></textarea>
+                            <select id="message-type">
+                                <option value="text">Text</option>
+                                <option value="design_feedback">Design Feedback</option>
+                                <option value="question">Question</option>
+                            </select>
+                            <button id="send-message-btn" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Returns Page -->
+            <section id="returns-page" class="page">
+                <h1>Returns</h1>
+                
+                <div id="returns-container" class="returns-container">
+                    <!-- Returns will be loaded here -->
+                </div>
+            </section>
+            
+            <!-- Return Request Modal -->
+            <div id="return-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    
+                    <form id="return-form">
+                        <h2>Request Return</h2>
+                        
+                        <div class="form-group">
+                            <label for="return-reason">Reason for Return</label>
+                            <select id="return-reason" required>
+                                <option value="">Select a reason</option>
+                                <option value="poor_fit">Poor Fit</option>
+                                <option value="damaged">Damaged</option>
+                                <option value="not_as_described">Not As Described</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="return-description">Description</label>
+                            <textarea id="return-description" placeholder="Describe the issue..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit Return Request</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Profile Page -->
+            <section id="profile-page" class="page">
+                <h1>My Profile</h1>
+                
+                <form id="profile-form" class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profile-firstname">First Name</label>
+                            <input type="text" id="profile-firstname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-lastname">Last Name</label>
+                            <input type="text" id="profile-lastname" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-email">Email</label>
+                        <input type="email" id="profile-email" disabled>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-phone">Phone</label>
+                        <input type="tel" id="profile-phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-address">Address</label>
+                        <input type="text" id="profile-address">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="profile-city">City</label>
+                            <input type="text" id="profile-city">
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-state">State</label>
+                            <input type="text" id="profile-state">
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-zip">Zip Code</label>
+                            <input type="text" id="profile-zip">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profile-country">Country</label>
+                        <input type="text" id="profile-country">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <div class="payment-container">
+                <h2>Complete Payment</h2>
+                <p>Order Total: $<span id="payment-total"></span></p>
+                
+                <div id="card-element"></div>
+                <button id="pay-submit-btn" class="btn btn-primary">Pay Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/body-scan.js"></script>
+    <script src="js/payment.js"></script>
+</body>
+</html>

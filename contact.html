@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+<style>
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffe6f2, #ffffff);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .contact-wrapper {
+        max-width: 1000px;
+        margin: 60px auto;
+        background: rgba(255,255,255,0.7);
+        padding: 40px;
+        border-radius: 30px;
+        box-shadow: 0px 10px 35px rgba(255, 0, 128, 0.15);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+
+    .contact-heading {
+        text-align: center;
+    }
+
+    .contact-heading h2 {
+        font-size: 38px;
+        color: #c2185b;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .contact-heading p {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #444;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 25px;
+        margin-top: 45px;
+    }
+
+    .contact-box {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0px 6px 20px rgba(255, 0, 128, 0.12);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .contact-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 12px 30px rgba(255, 0, 128, 0.20);
+    }
+
+    .contact-box span {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 10px;
+        color: #e91e63;
+    }
+
+    .contact-box h3 {
+        font-size: 20px;
+        color: #b40052;
+        margin-bottom: 8px;
+    }
+
+    .contact-box p,
+    .contact-box a {
+        font-size: 15px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .contact-box a:hover {
+        color: #ff2e91;
+        text-decoration: underline;
+    }
+
+    /* Map Styling */
+    .map {
+        margin-top: 50px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0px 10px 30px rgba(255, 0, 128, 0.2);
+    }
+
+    iframe {
+        width: 100%;
+        height: 350px;
+        border: none;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="contact-wrapper">
+
+    <div class="contact-heading">
+        <h2>Contact Us</h2>
+        <p>We are here for you always — Available 24/7 ❤️</p>
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-box">
+            <span>📍</span>
+            <h3>Address</h3>
+            <p>123 Fashion Street,<br>Coimbatore, Tamil Nadu</p>
+        </div>
+
+        <div class="contact-box">
+            <span>📞</span>
+            <h3>Phone</h3>
+            <p><a href="tel:+919876543210">+91 9876543210</a></p>
+        </div>
+
+        <div class="contact-box">
+            <span>📧</span>
+            <h3>Email</h3>
+            <p><a href="mailto:support@fashiontrend.com">support@fashiontrend.com</a></p>
+        </div>
+
+        <div class="contact-box">
+            <span>💬</span>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/919876543210" target="_blank">Chat Now</a></p>
+        </div>
+    </div>
+
+    <div class="map">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3905.9899510536766!2d76.94198321483083!3d11.016844292180873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859a4f6c9b751%3A0x7bd35ec8165e0618!2sCoimbatore%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sin!4v1704420000000"
+            allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+</div>
+
+</body>
+</html>

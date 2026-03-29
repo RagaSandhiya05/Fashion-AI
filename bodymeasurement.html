@@ -1,0 +1,307 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Body Measurement Scan</title>
+
+<style>
+body{
+  background-color: lightgoldenrodyellow;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* MAIN LAYOUT */
+.main-layout{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:30px;
+  max-width:1200px;
+  margin:40px auto;
+  padding:20px;
+}
+
+@media(max-width:900px){
+  .main-layout{
+    grid-template-columns:1fr;
+  }
+}
+
+/* LEFT AI SCAN */
+.ai-scan-box{
+  padding:30px;
+  background:linear-gradient(135deg,#fff0f5,#ffffff);
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(233,30,99,0.15);
+  text-align:center;
+}
+
+.scan-heading{
+  color:#e91e63;
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+.emoji-icon{
+  width:40px;
+  height:40px;
+  vertical-align:middle;
+  margin-right:6px;
+}
+
+.file-upload{
+  margin:18px 0;
+}
+
+.file-btn{
+  display:inline-block;
+  padding:12px 22px;
+  background:linear-gradient(135deg,#e91e63,#9c27b0);
+  color:#fff;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:15px;
+  transition:.3s;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.file-btn:hover{
+  transform:translateY(-2px);
+}
+
+.file-name{
+  margin-top:8px;
+  font-size:14px;
+  color:#555;
+  font-weight:600;
+}
+
+#aiScanBtn{
+  width:100%;
+  padding:14px 0;
+  margin-top:25px;
+  background:linear-gradient(135deg,#ff4081,#e91e63);
+  color:#fff;
+  font-size:17px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+#aiScanBtn:hover{
+  background:linear-gradient(135deg,#2ecc71,#27ae60);
+}
+
+#scanStatus{
+  margin-top:18px;
+  font-size:16px;
+  color:#9c27b0;
+  font-weight:600;
+}
+
+#confidence{
+  font-size:14px;
+  color:#2ecc71;
+  font-weight:bold;
+}
+
+#scanResults{
+  margin-top:10px;
+  font-size:17px;
+  color:#e91e63;
+  font-weight:700;
+}
+
+/* RIGHT FORM */
+.measure-form{
+  background:#fff;
+  padding:35px;
+  border-radius:22px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.measure-form h2{
+  text-align:center;
+  color:#e91e63;
+  font-size:26px;
+  margin-bottom:25px;
+}
+
+.measure-form input{
+  width:100%;
+  padding:12px 14px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1.5px solid #ccc;
+  font-size:14px;
+}
+
+.measure-form input[readonly]{
+  background:#fff0f5;
+  border-style:dashed;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.measure-form button{
+  margin-top:18px;
+  padding:12px;
+  background:#f06292;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.measure-form button:hover{
+  background:#2ecc71;
+}
+</style>
+</head>
+
+<body>
+
+<div class="main-layout">
+
+  <!-- LEFT AI SCAN -->
+  <div class="ai-scan-box">
+    <h2 class="scan-heading">
+      <img src="ai.png" class="emoji-icon">
+      AI Body Measurement Scan
+    </h2>
+
+    <div class="file-upload">
+      <label class="file-btn">
+        📸 Choose Front Photo
+        <input type="file" id="frontPhoto" accept="image/*" hidden>
+      </label>
+      <div id="frontFileName" class="file-name"></div>
+    </div>
+
+    <div class="file-upload">
+      <label class="file-btn">
+        📷 Choose Side Photo
+        <input type="file" id="sidePhoto" accept="image/*" hidden>
+      </label>
+      <div id="sideFileName" class="file-name"></div>
+    </div>
+
+    <button id="aiScanBtn">Start AI Scan</button>
+
+    <p id="scanStatus"></p>
+    <p id="confidence"></p>
+    <div id="scanResults"></div>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="measure-form">
+    <h2>
+      <img src="ai.png" style="height:40px;vertical-align:middle;">
+      Auto-Filled Measurements
+    </h2>
+
+    <form action="save_measure.php" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+
+      <div class="grid">
+        <input type="number" name="height" placeholder="Height (cm)" readonly>
+        <input type="number" name="bust" placeholder="Bust (cm)" readonly>
+        <input type="number" name="waist" placeholder="Waist (cm)" readonly>
+        <input type="number" name="hips" placeholder="Hips (cm)" readonly>
+        <input type="number" name="shoulder" placeholder="Shoulder (cm)" readonly>
+        <input type="number" name="sleeve" placeholder="Sleeve (cm)" readonly>
+      </div>
+
+      <button type="submit">Submit Measurements</button>
+    </form>
+  </div>
+
+</div>
+
+<script>
+const frontInput = document.getElementById("frontPhoto");
+const sideInput  = document.getElementById("sidePhoto");
+
+frontInput.addEventListener("change", () => validateHumanImage(frontInput, "frontFileName"));
+sideInput.addEventListener("change", () => validateHumanImage(sideInput, "sideFileName"));
+
+function validateHumanImage(input, labelId){
+  const file = input.files[0];
+  if(!file) return;
+
+  document.getElementById(labelId).innerText = "Selected: " + file.name;
+
+  const img = new Image();
+  img.src = URL.createObjectURL(file);
+
+  img.onload = () => {
+    const ratio = img.width / img.height;
+
+    // Basic human full-body validation
+    if(
+      img.width < 300 ||
+      img.height < 600 ||
+      ratio < 0.3 ||
+      ratio > 0.85
+    ){
+      alert("❌ Please upload a clear full-body HUMAN image only.");
+      input.value = "";
+      document.getElementById(labelId).innerText = "";
+    }
+  };
+}
+
+document.getElementById("aiScanBtn").addEventListener("click", async () => {
+
+  const front = frontInput.files[0];
+  const side  = sideInput.files[0];
+
+  if(!front || !side){
+    alert("Upload both front and side human images");
+    return;
+  }
+
+  document.getElementById("scanStatus").innerText = "Scanning with AI...";
+
+  const fd = new FormData();
+  fd.append("front_image", front);
+  fd.append("side_image", side);
+
+  try{
+    const res = await fetch("http://127.0.0.1:5000/measure",{
+      method:"POST",
+      body:fd
+    });
+
+    const d = await res.json();
+
+    document.querySelector("[name='height']").value = d.height;
+    document.querySelector("[name='bust']").value   = d.bust;
+    document.querySelector("[name='waist']").value  = d.waist;
+    document.querySelector("[name='hips']").value   = d.hips;
+    document.querySelector("[name='shoulder']").value = d.shoulder;
+    document.querySelector("[name='sleeve']").value   = d.sleeve;
+
+    document.getElementById("scanStatus").innerText = "✅ Scan Completed";
+    document.getElementById("confidence").innerText = "Accuracy: " + d.confidence;
+    document.getElementById("scanResults").innerHTML =
+      "<b>Recommended Size: " + d.size + "</b>";
+
+  }catch(err){
+    alert("❌ Python AI server not running");
+  }
+});
+</script>
+
+</body>
+</html>

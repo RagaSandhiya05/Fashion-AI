@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+ <style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #00f260, #0575e6, #7f00ff);
+
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden; /* 🔴 no scroll */
+}
+
+/* Container */
+.container{
+  width:420px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
+  padding:18px 22px;
+}
+
+/* Header */
+.header{
+  background:#c2185b;
+  color:#fff;
+  text-align:center;
+  padding:8px;
+  font-size:18px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+/* Inputs */
+.form-control{
+  width:100%;
+  padding:8px;
+  margin:6px 0;
+  border:1px solid #ccc;
+  border-radius:5px;
+  font-size:13px;
+}
+
+/* Questions */
+.question{
+  font-weight:600;
+  font-size:13px;
+  margin:8px 0 4px;
+}
+
+/* Options */
+.options{
+  display:flex;
+  gap:10px;
+  margin-bottom:6px;
+}
+
+.options label{
+  font-size:13px;
+  color:#c2185b;
+}
+
+/* Textarea */
+textarea{
+  width:100%;
+  height:55px;
+  padding:8px;
+  border-radius:5px;
+  border:1px solid #ccc;
+  font-size:13px;
+}
+
+/* Button */
+button{
+  width:100%;
+  margin-top:8px;
+  padding:10px;
+  border:none;
+  background:#c2185b;
+  color:#fff;
+  font-size:14px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#9c1348;
+}
+</style>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="header">Feedback Form</div>
+   <form action="feedback.php" method="POST">
+
+  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+
+  <!-- <input type="text" name="phone" class="form-control" placeholder="Phone Number" required> -->
+
+  <input type="email" name="email" class="form-control" placeholder="Email Address">
+
+  <p>Please rate each item on a scale of 1 to 5</p>
+
+  <div class="question">How did you like the dress quality?</div>
+  <div class="options">
+    <label>5 <input type="radio" name="quality" value="5" required></label>
+    <label>4 <input type="radio" name="quality" value="4"></label>
+    <label>3 <input type="radio" name="quality" value="3"></label>
+    <label>2 <input type="radio" name="quality" value="2"></label>
+    <label>1 <input type="radio" name="quality" value="1"></label>
+  </div>
+
+  <div class="question">How satisfied are you with the fitting of the dress?</div>
+  <div class="options">
+    <label>5 <input type="radio" name="fit" value="5" required></label>
+    <label>4 <input type="radio" name="fit" value="4"></label>
+    <label>3 <input type="radio" name="fit" value="3"></label>
+    <label>2 <input type="radio" name="fit" value="2"></label>
+    <label>1 <input type="radio" name="fit" value="1"></label>
+  </div>
+
+  <div class="question">How would you rate the design/style?</div>
+  <div class="options">
+    <label>5 <input type="radio" name="design" value="5" required></label>
+    <label>4 <input type="radio" name="design" value="4"></label>
+    <label>3 <input type="radio" name="design" value="3"></label>
+    <label>2 <input type="radio" name="design" value="2"></label>
+    <label>1 <input type="radio" name="design" value="1"></label>
+  </div>
+
+  <div class="question">How easy was ordering?</div>
+  <div class="options">
+    <label>5 <input type="radio" name="ordering" value="5" required></label>
+    <label>4 <input type="radio" name="ordering" value="4"></label>
+    <label>3 <input type="radio" name="ordering" value="3"></label>
+    <label>2 <input type="radio" name="ordering" value="2"></label>
+    <label>1 <input type="radio" name="ordering" value="1"></label>
+  </div>
+
+  <div class="question">Overall experience?</div>
+  <div class="options">
+    <label>5 <input type="radio" name="overall" value="5" required></label>
+    <label>4 <input type="radio" name="overall" value="4"></label>
+    <label>3 <input type="radio" name="overall" value="3"></label>
+    <label>2 <input type="radio" name="overall" value="2"></label>
+    <label>1 <input type="radio" name="overall" value="1"></label>
+  </div>
+
+  <textarea name="comment" placeholder="Write your feedback here..."></textarea>
+
+  <button type="submit">Submit Feedback</button>
+
+</form>
+
+  </div>
+</body>
+</html>
+
+

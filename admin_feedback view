@@ -1,0 +1,53 @@
+<?php
+include "db.php";
+
+$sql = "SELECT * FROM feedback ORDER BY submitted_at DESC";
+$result = $conn->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Feedback Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f8f9fa; }
+    h2 { color: #880e4f; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+    th { background: #c2185b; color: white; }
+  </style>
+</head>
+<body>
+  <h2>Customer Feedback</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Quality</th>
+      <th>Fitting</th>
+      <th>Design</th>
+      <th>Ordering</th>
+      <th>Overall</th>
+      <th>Comments</th>
+      <th>Submitted At</th>
+    </tr>
+    <?php while($row = $result->fetch_assoc()) { ?>
+      <tr>
+        <td><?= $row["id"] ?></td>
+        <td><?= $row["name"] ?></td>
+        <td><?= $row["phone"] ?></td>
+        <td><?= $row["email"] ?></td>
+        <td><?= $row["quality"] ?></td>
+        <td><?= $row["fitting"] ?></td>
+        <td><?= $row["design"] ?></td>
+        <td><?= $row["order_experience"] ?></td>
+        <td><?= $row["overall_experience"] ?></td>
+        <td><?= $row["comments"] ?></td>
+        <td><?= $row["submitted_at"] ?></td>
+      </tr>
+    <?php } ?>
+  </table>
+</body>
+</html>

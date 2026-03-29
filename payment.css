@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#payment {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #ffe6f0, #ff99c8);
+  text-align: center;
+}
+
+h2 {
+  font-size: 3em;
+  color: #d81b60;
+}
+
+.subtitle {
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.payment-box {
+  max-width: 450px;
+  background: white;
+  margin: auto;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.payment-icons img {
+  height: 30px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(45deg,#d81b60,#ff4081);
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}

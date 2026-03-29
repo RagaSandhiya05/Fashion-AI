@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Return Request Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+     background: linear-gradient(135deg, #ff5f6d, #ffc371, #ff758c);
+
+
+
+
+
+
+    }
+
+    .form-wrapper {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .form-header {
+      background-color: #6a1b9a;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .form-header h2 {
+      color: white;
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .form-body {
+      padding: 30px;
+    }
+
+    .form-body input,
+    .form-body textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-body input:focus,
+    .form-body textarea:focus {
+      border-color: #6a1b9a;
+      box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.1);
+      outline: none;
+    }
+
+    .form-body textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-body button {
+      width: 100%;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-body button:hover {
+      background-color: #8e24aa;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .form-wrapper {
+        margin: 20px;
+      }
+
+      .form-body {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <div class="form-header">
+      <h2>Return Request Form</h2>
+    </div>
+    <form class="form-body" onsubmit="handleReturnRequest(event)">
+      <input type="text" id="r-name" placeholder=" Name" required>
+      <input type="email" id="r-email" placeholder=" Email" required>
+      <input type="text" id="r-order" placeholder="Order ID or Dress Name" required>
+      <textarea id="r-reason" placeholder="Reason for return..." required></textarea>
+      <button type="submit">Submit Return Request</button>
+    </form>
+  </div>
+
+  <script>
+    function handleReturnRequest(event) {
+      event.preventDefault();
+      const name = document.getElementById("r-name").value;
+      alert(`Hi ${name}, your return request has been submitted successfully!`);
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>
+
+

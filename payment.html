@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pink Dress Payment</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(90deg,#f6c1d6 50%, #f48bbd 50%);
+}
+
+.container{
+    display:flex;
+    align-items:center;
+    gap:60px;
+}
+
+.order-box{
+    width:300px;
+    background:#ffffff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.order-box h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:5px;
+    border:1px solid #ddd;
+    background:#f3f3f3;
+}
+
+.price-display, .total{
+    margin-top:15px;
+    font-size:16px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.total{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+/* RIGHT BOX */
+.payment-box{
+    width:400px;
+    background:#5a003c;
+    padding:35px;
+    border-radius:15px;
+    color:#fff;
+    box-shadow:0 25px 45px rgba(0,0,0,0.3);
+}
+
+.payment-box h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+label{
+    font-size:14px;
+    display:block;
+    margin-bottom:5px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:5px;
+    background:#f3f3f3;
+}
+
+.row{
+    display:flex;
+    gap:10px;
+}
+
+.row div{
+    flex:1;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#ff4fa3;
+    border:none;
+    color:#fff;
+    font-weight:bold;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff1f8a;
+}
+
+.success{
+    text-align:center;
+    margin-top:10px;
+    color:#ffb3d9;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<form action="process_payment.php" method="POST">
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="order-box">
+        <h2>Select Your Dress</h2>
+
+        <label>Choose Dress</label>
+        <select id="dressSelect" name="amount" onchange="updatePrice()">
+            <option value="0">-- Select Dress --</option>
+            <option value="1200">Floral Summer Dress - ₹1200</option>
+            <option value="1800">Party Wear Gown - ₹1800</option>
+            <option value="1500">Casual Midi Dress - ₹1500</option>
+            <option value="2200">Designer Lehenga - ₹2200</option>
+        </select>
+
+        <div class="price-display">
+            <span>Price</span>
+            <span id="price">₹0</span>
+        </div>
+
+        <div class="total">
+            <span>Total</span>
+            <span id="total">₹0</span>
+        </div>
+    </div>
+
+    <div class="payment-box">
+        <h2>Payment</h2>
+
+        <label>First Name</label>
+        <input type="text" name="fname" placeholder="Enter First Name" required>
+
+        <label>Last Name</label>
+        <input type="text" name="lname" placeholder="Enter Last Name" required>
+
+        <label>Card Number</label>
+        <input type="text" name="card" placeholder="1111-2222-3333-4444" maxlength="19" id="cardNumber" required>
+
+        <div class="row">
+            <div>
+                <label>Expiration Date</label>
+                <input type="month" name="expiry" required>
+            </div>
+            <div>
+                <label>CVV</label>
+                <input type="password" maxlength="3" name="cvv" required>
+            </div>
+        </div>
+
+        <input type="hidden" name="order_id" value="1">
+
+        <button type="submit">PURCHASE</button>
+
+        <div class="success" id="successMsg"></div>
+    </div>
+
+</div>
+
+</form>
+
+<script>
+function updatePrice(){
+    const select = document.getElementById("dressSelect");
+    const price = select.value;
+
+    document.getElementById("price").innerText = "₹" + price;
+    document.getElementById("total").innerText = "₹" + price;
+}
+
+document.getElementById("cardNumber").addEventListener("input", function (e) {
+    let value = e.target.value.replace(/\D/g, "").substring(0,16);
+    let formatted = value.match(/.{1,4}/g);
+    e.target.value = formatted ? formatted.join("-") : "";
+});
+</script>
+
+</body>
+</html>
