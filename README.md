@@ -20,6 +20,7 @@
 * [Application Workflow](#-application-workflow)
 * [Installation and Setup](#️-installation-and-setup)
 * [Project Structure](#-project-structure)
+* [Application Screenshots](#-application-screenshots)
 * [Future Enhancements](#-future-enhancements)
 * [Contributing](#-contributing)
 * [License](#-license)
@@ -207,7 +208,7 @@ C:\xampp\htdocs\
 For example:
 
 ```text
-C:\xampp\htdocs\dream-dress\
+C:\xampp\htdocs\Fashion-AI\
 ```
 
 ### 3. Start the Required Services
@@ -230,7 +231,7 @@ Use the actual database name, username, and password configured in your local en
 Open the following URL in your browser, replacing the folder name if necessary:
 
 ```text
-http://localhost/dream-dress/
+http://localhost/Fashion-AI/
 ```
 
 The application should now be accessible through your local web server.
@@ -338,6 +339,62 @@ Fashion-AI/
 ```
 ---
 
+## 📸 Application Screenshots
+
+### 🔐 User Login
+Secure user login interface with email/password authentication and Google sign-in support.
+
+<p align="center">
+<img width="568" height="574" alt="Picture1" src="https://github.com/user-attachments/assets/195d75ed-c95c-474f-b03d-1df8259edcfc" />
+</p>
+
+---
+
+### 📏 AI Body Measurement
+AI-assisted body measurement interface where users can upload front and side photos to initiate the measurement process.
+
+<p align="center">
+<img width="1151" height="553" alt="Picture2" src="https://github.com/user-attachments/assets/430bf6f3-c772-4c8d-9438-4106c834b158" />
+</p>
+
+---
+
+### 👗 Fashion & Fabric Exploration
+Interactive fashion interface allowing users to explore different dress styles, fabrics, textures, and materials.
+
+<p align="center">
+<img width="949" height="566" alt="Picture3" src="https://github.com/user-attachments/assets/095f1c87-45c4-41d8-aab5-4a106a81c1ed" />
+</p>
+
+---
+
+### 💳 Dress Selection & Payment
+Users can select a dress, view its price, enter payment details, and complete the purchase process.
+
+<p align="center">
+<img width="1600" height="770" alt="WhatsApp Image 2026-09-25 at 11 23 20 AM" src="https://github.com/user-attachments/assets/8381d9cb-353d-4a01-b23b-dc68acfee254" />
+</p>
+
+---
+
+### ↩️ Return Request
+Return request form for submitting order-related return requests with customer and order details.
+
+<p align="center">
+<img width="505" height="579" alt="Picture5" src="https://github.com/user-attachments/assets/b0a58490-3e80-4ec9-ab8a-5b5a30b7daaa" />
+</p>
+
+---
+
+### 💬 Customer Feedback
+Feedback interface that allows users to rate dress quality, fitting, design, ordering experience, and provide additional comments.
+
+<p align="center">
+<img width="507" height="579" alt="Picture6" src="https://github.com/user-attachments/assets/a8115534-2694-43d3-8e49-5fdd03a226b6" />
+</p>
+
+---
+
 ## 🔮 Future Enhancements
 
 The platform can be extended with the following features:
@@ -422,4 +479,6 @@ If you intend to distribute or reuse the project publicly, consider adding an ap
 
 Fashion-AI brings together fashion customization, measurement management, designer interaction, and online ordering in one platform.
 
-**Your style. Your measurements. Your design. Your Dream Dress.**
+<p align="center">
+<i>Your style. Your measurements. Your design. Your vision.</i>
+</p>
